@@ -16,7 +16,7 @@ module.exports.genresControllers = {
     },
 
     getGenresById: async(req, res) => {
-        await Genres.find();
-        res.json('жанры выведены')
+        const genres = await Genres.find();
+        res.json(genres)
     }
 }

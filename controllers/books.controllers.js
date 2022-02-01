@@ -3,12 +3,12 @@ const Book = require('../models/Book.model')
 module.exports.booksControllers = {
     postBooks: async(req, res) => {
          const { name, author, genres} = req.body;
-         const book = await Book.create({
+         const books = await Book.create({
             name: name,
             author: author,
             genres: genres      
         })
-        res.json(book)
+        res.json(books)
     },
 
     deleteBooksById: async(req, res) => {
@@ -18,17 +18,17 @@ module.exports.booksControllers = {
 
     patchBooks: async(req, res) => {
         const { name, author, genres } = req.body;
-        await Book.findByIdAndUpdate({
+       const books = await Book.findByIdAndUpdate({
             name: name,
             author: author,
             genres: genres
         })
-        res.json('книга изменена')
+        res.json(books)
     },
 
     getBooksById: async(req, res) => {
-        await Book.find(req.params.id)
-        res.json('Книга выведена по id:' + req.params.id)
+       const book = await Book.find(req.params.id)
+        res.json(book)
     },
 
     getBooks: async(req, res) => {
@@ -37,7 +37,7 @@ module.exports.booksControllers = {
     },
 
     getAllBooksById: async(req, res) => {
-        await Book.find({genres : req.params.id})
-        res.json('выведены все книги из жанра по id:' + req.params.id)
+       const books = await Book.find({genres : req.params.id})
+        res.json(books)
     }
 }

@@ -17,7 +17,7 @@ module.exports.reviewControllers = {
     },
 
     getAllReviewsById: async(req, res) => {
-        await Review.find({bookId : req.params.id})
-        res.json('Все рецензии выведены к этой книге по id:' + req.params.id)
+       const review = await Review.find({bookId : req.params.id})
+        res.json(review)
     }
 }
