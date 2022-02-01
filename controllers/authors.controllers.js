@@ -15,4 +15,5 @@ module.exports.authorsControllers = {
         await Author.findByIdAndRemove(req.params.id)
         res.json('автор удален по id:' + req.params.id)
     }
+    
 }
